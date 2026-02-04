@@ -1,0 +1,35 @@
+body {
+    background-color: lightcyan;
+    height: 100%;
+    overflow: hidden;
+}
+
+#mazebody {
+    margin: 0;
+    padding: 0;
+    height: 95vh;
+    overflow: hidden;
+}
+
+#MazeGameCanvas {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#mazediv {
+    flex: 1 1 auto;
+    display: flex;
+    background-color: darkgray;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    overflow: auto;
+}
+
+#maze-form {
+    flex: 0 0 auto;
+}
+
+#maze-bottom-bar {
+    flex: 0 0 auto;
+}

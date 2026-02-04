@@ -1,0 +1,41 @@
+services:
+  www:
+        build: docker
+        ports: 
+            - "8080:80"
+        volumes:
+            - ./www:/var/www/html/
+        depends_on:
+            - db
+        networks:
+            - default
+        restart: unless-stopped
+
+  db:
+        image: mysql:5.7
+        ports: 
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: projects
+            MYSQL_USER: root
+            MYSQL_PASSWORD: projects
+            MYSQL_ROOT_PASSWORD: projects
+        volumes:
+            - ./sql/init:/docker-entrypoint-initdb.d
+            - persistent:/var/lib/mysql
+        networks:
+            - default
+        restart: unless-stopped
+  phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 8000:80
+        environment:
+            MYSQL_USER: root
+            MYSQL_PASSWORD: projects
+            MYSQL_ROOT_PASSWORD: projects
+        depends_on:
+            - db
+        restart: unless-stopped
+volumes:
+    persistent:
