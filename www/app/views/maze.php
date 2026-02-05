@@ -23,13 +23,13 @@ $width = isset($_GET['width']) ? $_GET['width'] : 20;
     </div>
   </div>
 
-  <span id='maze-bottom-bar' class='d-flex w-100 justify-content-between'>
+  <span id='maze-bottom-bar' class='d-flex w-100 mb-5 justify-content-between'>
     <?php if(!$vs) { ?>
-    <span id='arrows' class='float-left px-4'>
-      <button class='btn btn-primary align-middle fs-3' onclick='move("left", "red")'>&#129032;</button>
-      <button class='btn btn-primary align-middle fs-3' onclick='move("up", "red")'>&#129033;</button>
-      <button class='btn btn-primary align-middle fs-3' onclick='move("down", "red")'>&#129035;</button>
-      <button class='btn btn-primary align-middle fs-3' onclick='move("right", "red")'>&#129034;</button>
+    <span id='arrows' class='float-left px-4 '>
+      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("left", "red")'>&larr;</button>
+      <button class='maze-button btn btn-primary align-middle fs-3' onclick='move("up", "red")'>&uarr;</button>
+      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("down", "red")'> &darr; </button>
+      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("right", "red")'>&rarr;</button>
     </span>
     <?php } ?>
   <h2 class='float-right p-4' id='timer'>time: 0</h2>

@@ -1,5 +1,6 @@
-
-<canvas id="gameCanvas" class="overflow-x-hidden"></canvas>
+<div class="h-100 overflow-auto">
+    <canvas id="gameCanvas" class="overflow-x-hidden overflow-y-auto"></canvas>
+</div>
 
 <script>
     const canvas = document.getElementById("gameCanvas");
@@ -18,7 +19,7 @@
     let yOffset = xOffset;
 
     let navset = document.getElementById("navbar").offsetHeight;
-    canvas.height = Math.max(cardsOnCol * (cardSize + spacing) + yOffset * 3, window.innerHeight - navset) - 10;
+    canvas.height = Math.max(cardsOnCol * (cardSize + spacing) + yOffset * 4, window.innerHeight - navset);
 
     let cardAmount = cardsOnRow * cardsOnCol;
 
@@ -110,7 +111,7 @@
 
         ctx.fillStyle = "black";
         ctx.font = "30px Arial";
-        ctx.fillText("you took " + turns + " turns!", canvas.width / 2 - ctx.measureText("you took " + turns + " turns!").width / 2, cardSize * cardsOnCol + spacing * cardsOnCol + 0.5 * spacing + yOffset * 2);
+        ctx.fillText("you took " + turns + " turns!", canvas.width / 2 - ctx.measureText("you took " + turns + " turns!").width / 2, cardSize * cardsOnCol + spacing * cardsOnCol + 0.5 * spacing + yOffset * 2 );
         ctx.font = "100px Arial";
         //victory
         if (totalFound == cardAmount) {
@@ -158,8 +159,8 @@
     }
 
     canvas.addEventListener("click", (event) => {
-        const clickX = event.clientX;
-        const clickY = event.clientY + this.scrollY - navset;
+        const clickX = event.offsetX;
+        const clickY = event.offsetY;
         if (totalFound == cardAmount){
             if (clickX > canvas.width / 2 - ctx.measureText("try again").width / 2 - 25 &&
                 clickX < canvas.width / 2 - ctx.measureText("try again").width / 2 - 25 + ctx.measureText("try again").width + 50 &&

@@ -4,6 +4,10 @@ body {
     overflow: hidden;
 }
 
+.maze-button {
+    width: 50px;
+}
+
 #mazebody {
     margin: 0;
     padding: 0;

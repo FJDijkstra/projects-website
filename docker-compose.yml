@@ -17,7 +17,7 @@ services:
             - "3306:3306"
         environment:
             MYSQL_DATABASE: projects
-            MYSQL_USER: root
+            MYSQL_USER: foppe
             MYSQL_PASSWORD: projects
             MYSQL_ROOT_PASSWORD: projects
         volumes:
@@ -31,7 +31,7 @@ services:
         ports:
             - 8000:80
         environment:
-            MYSQL_USER: root
+            MYSQL_USER: foppe
             MYSQL_PASSWORD: projects
             MYSQL_ROOT_PASSWORD: projects
         depends_on:

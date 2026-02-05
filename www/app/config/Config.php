@@ -6,7 +6,7 @@
  * Define the constants for the database connection.
  */
 define("DB_HOST", "db"); // you can add specified port number ex: localhost:3306
-define("DB_USER", "root");
+define("DB_USER", "foppe");
 define("DB_PASS", "projects");
 define("DB_NAME", "projects");
 
