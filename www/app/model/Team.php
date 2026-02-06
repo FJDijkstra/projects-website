@@ -33,6 +33,15 @@ class Team {
     }
 
     public static function createNew(string $name) {
+        if ($name == "") {
+            return NULL;
+        }
+        $teams = Team::getTeams();
+        foreach ($teams as $team) {
+            if ($team->name == $name) {
+                return NULL;
+            }
+        }
         Database::instance()->storeQuery("INSERT INTO `teams` (name, points) VALUES ('$name', 0)");
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->execute();

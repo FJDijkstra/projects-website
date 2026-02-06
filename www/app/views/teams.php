@@ -1,6 +1,3 @@
-<?php if ($error != "") {
-    echo "<p>error: $error</p>"; 
-    }?>
 
 <form action="/buzzer" class="form-group p-4">
     <label  class="m-2 my-auto" for="team">Welke groep ben je?</label>
@@ -16,10 +13,12 @@
     </div>
 </form>
 
-<form action="/teams" method="get" class="form-group p-4">
+<form action="/buzzer/teams" method="get" class="form-group p-4">
     <label  class=" m-2 my-auto" for="teamname">Voeg een groep toe:</label>
     <div class="d-flex">
         <input type="text" id="teamname" name="teamname" placeholder="type hier je naam" class='form-control m-2'>
         <input class='btn btn-primary m-2' type="submit" value="Toevoegen">
     </div>
 </form>
+
+<a class="btn btn-primary" href="/buzzer/admin">Admin</a>

@@ -11,17 +11,9 @@ use MyApp\Team;
 class TeamsController extends Controller
 {
     protected array $teams;
-    protected string $error = "";
     public function __construct()
     {
-        $this->teams = Team::getTeams();
-        $teamname = isset($_GET['teamname']) ? (string) $_GET['teamname'] : "";
-        foreach ($this->teams as $team) {
-            if ($teamname == $team->name) {
-                $this->error = "Deze teamnaam bestaat al, kies een andere naam!";
-            }
-        }
-        if ($this->error == "") {
+        if(isset($_GET['teamname'])) {
             Team::createNew((string) $_GET['teamname']);
         }
         $this->teams = Team::getTeams();
@@ -31,8 +23,7 @@ class TeamsController extends Controller
      */
     public function index()
     {
-        $data['title'] = "Teams";
-        $data['error'] = $this->error;
+        $data['title'] = "Buzzer";
         $data['teams'] = $this->teams;
         $this->template('header', $data);
         $this->template('navbar', $data);

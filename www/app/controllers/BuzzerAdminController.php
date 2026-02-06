@@ -9,17 +9,17 @@ use MyApp\Buzz;
  *
  * Represents the controller for the home-related functionality.
  */
-class BuzzerController extends Controller
+class BuzzerAdminController extends Controller
 {
-    protected Team $team;
     public function __construct()
     {
-        $teamid = isset($_GET['team']) ? (int) $_GET['team'] : 0;
-        if ($teamid > 0) {
-            $this->team = Team::getById($teamid);
+        if (isset($_GET['delete'])) {
+            Buzz::deleteBuzz($_GET['delete']);
         }
-        if (isset($_GET['teamid'])) {
-            Buzz::createNew($_GET['teamid']);
+        if (isset($_GET['deleteAll'])) {
+            if ($_GET['deleteAll']) {
+                Buzz::deleteAllBuzz();
+            }
         }
     }
     /**
@@ -28,11 +28,11 @@ class BuzzerController extends Controller
     public function index()
     {
         $data['title'] = "Buzzer";
-        $data['teamname'] = ($this->team)->name;
-        $data['teamid'] = ($this->team)->id;
+        $data['buzzes'] = Buzz::getBuzzes();
+        $data['teams'] = Team::getTeams();
         $this->template('header', $data);
         $this->template('navbar', $data);
-        $this->view('buzzer', $data);
+        $this->view('buzzerAdmin', $data);
         $this->template('footer');
     }
 }

@@ -21,7 +21,7 @@
                 <a class="nav-link" href="/memory">(Meme)ory</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/teams">Buzzer</a>
+                <a class="nav-link" href="/buzzer/teams">Buzzer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/size">Size</a>

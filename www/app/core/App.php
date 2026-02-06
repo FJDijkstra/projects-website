@@ -38,8 +38,10 @@ class App {
         $this->router->addRoute('maze', 'MazeController@index');
         $this->router->addRoute('memory', 'memoryController@index');
         $this->router->addRoute('size', 'SizeController@index');
-        $this->router->addRoute('teams', 'TeamsController@index');
+        $this->router->addRoute('buzzer/teams', 'TeamsController@index');
         $this->router->addRoute('buzzer', 'BuzzerController@index');
+        $this->router->addRoute('buzzer/admin', 'BuzzerAdminController@index');
+        $this->router->addRoute('buzzer/list', 'BuzzListController@index');
         // Add more routes as needed
     }
 
