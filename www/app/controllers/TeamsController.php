@@ -10,14 +10,13 @@ use MyApp\Team;
  */
 class TeamsController extends Controller
 {
-    protected array $teams;
     public function __construct()
     {
         if(isset($_GET['teamname'])) {
             Team::createNew((string) $_GET['teamname']);
             header("location: /buzzer/teams");
+            exit;
         }
-        $this->teams = Team::getTeams();
     }
     /**
      * Display the index page.
@@ -25,9 +24,10 @@ class TeamsController extends Controller
     public function index()
     {
         $data['title'] = "Buzzer";
-        $data['teams'] = $this->teams;
+        $data['teams'] = Team::getTeams();
         $this->template('header', $data);
         $this->template('navbar', $data);
+        $this->template('errors', $data);
         $this->view('teams', $data);
         $this->template('footer');
     }

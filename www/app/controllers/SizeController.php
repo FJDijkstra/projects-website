@@ -17,6 +17,7 @@ class SizeController extends Controller
         $data['title'] = "Size";
         $this->template('header', $data);
         $this->template('navbar', $data);
+        $this->template('errors', $data);
         $this->view('size', $data);
         $this->template('footer');
     }

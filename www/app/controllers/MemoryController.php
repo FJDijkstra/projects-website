@@ -17,6 +17,7 @@ class MemoryController extends Controller
         $data['title'] = "Memory";
         $this->template('header', $data);
         $this->template('navbar', $data);
+        $this->template('errors', $data);
         $this->view('memory', $data);
         $this->template('footer');
     }

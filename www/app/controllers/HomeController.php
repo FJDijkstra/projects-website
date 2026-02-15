@@ -17,6 +17,7 @@ class HomeController extends Controller
         $data['title'] = "Home";
         $this->template('header', $data);
         $this->template('navbar', $data);
+        $this->template('errors', $data);
         $this->view('home', $data);
         $this->template('footer');
     }

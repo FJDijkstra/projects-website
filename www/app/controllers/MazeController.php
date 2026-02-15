@@ -18,6 +18,7 @@ class MazeController extends Controller
         $data['vs'] = isset($_GET['vs']) ? $_GET['vs'] : 0;
         $this->template('header', $data);
         $this->template('navbar', $data);
+        $this->template('errors', $data);
         $this->view('maze', $data);
         $this->template('footer');
     }

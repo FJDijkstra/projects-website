@@ -34,11 +34,13 @@ class Team {
 
     public static function createNew(string $name) {
         if ($name == "") {
+            ErrorHandler::addError("Geen teamnaam ingevuld");
             return NULL;
         }
         $teams = Team::getTeams();
         foreach ($teams as $team) {
             if ($team->name == $name) {
+                ErrorHandler::addError("Dit team bestaat al");
                 return NULL;
             }
         }
