@@ -71,6 +71,45 @@ class Team {
 
     }
 
+    public static function setPoints(int $id, int $points) {
+        Database::instance()->storeQuery('UPDATE teams SET points = ? WHERE id = ?');
+        $stmt = Database::instance()->prepareStoredQuery();
+        $stmt->bind_param(
+            'ii',
+            $points,
+            $id
+        );
+        $stmt->execute();
+
+        return Team::getById($id);
+    }
+
+    public static function changePoints(int $id, int $change) {
+        $team = Team::getById($id);
+        Team::setPoints($id, $team->points + $change);
+    }
+
+    public static function deleteTeam(int $id) {
+        Buzz::deleteBuzzesFromTeam($id);
+        Database::instance()->storeQuery('DELETE FROM teams WHERE id = ?');
+        $stmt = Database::instance()->prepareStoredQuery();
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+    }
+
+    public static function deleteAllTeams() {
+        Buzz::deleteAllBuzz();
+        Database::instance()->storeQuery('DELETE FROM teams');
+        $stmt = Database::instance()->prepareStoredQuery();
+        $stmt->execute();
+    }
+
+    public static function clearPoints() {
+        Database::instance()->storeQuery('UPDATE teams SET points = 0');
+        $stmt = Database::instance()->prepareStoredQuery();
+        $stmt->execute();
+    }
+
 
 }
 ?>

@@ -70,6 +70,13 @@ class Buzz {
         $stmt->execute();
     }
 
+    public static function deleteBuzzesFromTeam(int $teamId) {
+        Database::instance()->storeQuery('DELETE FROM buzz WHERE team = ?');
+        $stmt = Database::instance()->prepareStoredQuery();
+        $stmt->bind_param('i', $teamId);
+        $stmt->execute();
+    }
+
     public static function deleteAllBuzz() {
         Database::instance()->storeQuery('DELETE FROM buzz');
         $stmt = Database::instance()->prepareStoredQuery();

@@ -18,8 +18,9 @@ class BuzzerController extends Controller
         if ($teamid > 0) {
             $this->team = Team::getById($teamid);
         }
-        if (isset($_GET['teamid'])) {
-            Buzz::createNew($_GET['teamid']);
+        if (isset($_GET['buzzed'])) {
+            Buzz::createNew($teamid);
+            header("location: /buzzer?team=$teamid");
         }
     }
     /**

@@ -15,6 +15,7 @@ class TeamsController extends Controller
     {
         if(isset($_GET['teamname'])) {
             Team::createNew((string) $_GET['teamname']);
+            header("location: /buzzer/teams");
         }
         $this->teams = Team::getTeams();
     }
