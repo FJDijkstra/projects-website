@@ -23,13 +23,13 @@ $width = isset($_GET['width']) ? max($_GET['width'], 10) : 20;
     </div>
   </div>
 
-  <span id='maze-bottom-bar' class='d-flex w-100 mb-5 justify-content-between'>
+  <span id='maze-bottom-bar' class='d-flex w-100 justify-content-between'>
     <?php if(!$vs) { ?>
     <span id='arrows' class='float-left px-4 '>
-      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("left", "red")'>&larr;</button>
-      <button class='maze-button btn btn-primary align-middle fs-3' onclick='move("up", "red")'>&uarr;</button>
-      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("down", "red")'> &darr; </button>
-      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("right", "red")'>&rarr;</button>
+      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("left", "red")'><i class='fs-12 fa fa-arrow-left'></i></button>
+      <button class='maze-button btn btn-primary align-middle fs-3' onclick='move("up", "red")'><i class='fs-12 fa fa-arrow-up'></i></button>
+      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("down", "red")'><i class='fs-12 fa fa-arrow-down'></i> </button>
+      <button class='maze-button btn btn-primary align-middle fs-3 ' onclick='move("right", "red")'><i class='fs-12 fa fa-arrow-right'></i></button>
     </span>
     <?php } ?>
   <h2 class='float-right p-4' id='timer'>time: 0</h2>
@@ -51,7 +51,6 @@ $width = isset($_GET['width']) ? max($_GET['width'], 10) : 20;
 
 
   // Stel canvasgrootte in
-  let offsett = document.getElementById('maze-form').offsetHeight + document.getElementById('maze-bottom-bar').offsetHeight + document.getElementById('navbar').offsetHeight;
   viewwidth = document.getElementById('MazeGameCanvas').offsetWidth;
   viewheight = document.getElementById('MazeGameCanvas').offsetHeight;
 
@@ -165,28 +164,29 @@ $width = isset($_GET['width']) ? max($_GET['width'], 10) : 20;
     ctx.fillStyle = "rgb(255,255,255,0.7)";
     ctx.fillRect(0 , 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
-    ctx.font = "100px Arial";
-    ctx.fillText("Victory", w / 2 - ctx.measureText("Victory").width / 2 + scrollX, 100 + scrollY);
+    ctx.font = "80px Arial";
+    ctx.fillText("Victory", w / 2 - ctx.measureText("Victory").width / 2 + scrollX, 75 + scrollY);
     if (!vs) {
       let red_cells = countCells(lred);
       let score = Math.floor((100000 * red_cells) / Math.floor((end_time - start_time)));
-      ctx.font = "50px Arial";
+      ctx.font = "40px Arial";
       let text = "score: " + score;
-      ctx.fillText(text, w / 2 - ctx.measureText(text).width / 2 + scrollX, 160 + scrollY);
+      ctx.fillText(text, w / 2 - ctx.measureText(text).width / 2 + scrollX, 130 + scrollY);
     } else {
-      ctx.font = "50px Arial";
+      ctx.font = "40px Arial";
       let text = "player " + winner + " won!";
-      ctx.fillText(text, w / 2 - ctx.measureText(text).width / 2 + scrollX, 160 + scrollY);
+      ctx.fillText(text, w / 2 - ctx.measureText(text).width / 2 + scrollX, 130 + scrollY);
     }
     ctx.drawImage(
       victoryImage,
       w / 2 - h / 4 + scrollX, // Correct centreren van de afbeelding
-      180 + scrollY,
+      135 + scrollY,
       h / 2,
       h / 2 // Schaal de hoogte naar de breedte
     );
+    ctx.font = "50px Arial";
     retryX = w / 2 - ctx.measureText("try again").width / 2 - 25 + scrollX;
-    retryY =  h - 125 - 25 + scrollY;
+    retryY =  h - 95 + scrollY;
     ctx.fillRect(retryX, retryY, 250, 80);
     ctx.fillStyle = "white";
     ctx.fillRect(retryX + 5, retryY + 5, 240, 70);

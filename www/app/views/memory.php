@@ -19,7 +19,7 @@
     let yOffset = xOffset;
 
     let navset = document.getElementById("navbar").offsetHeight;
-    canvas.height = Math.max(cardsOnCol * (cardSize + spacing) + yOffset * 4, window.innerHeight - navset);
+    canvas.height = Math.max(cardsOnCol * (cardSize + spacing) + yOffset * 5, window.innerHeight - navset);
 
     let cardAmount = cardsOnRow * cardsOnCol;
 
