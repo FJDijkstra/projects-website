@@ -1,7 +1,7 @@
 
 <?php
-$height = isset($_GET['height']) ? $_GET['height'] : 15;
-$width = isset($_GET['width']) ? $_GET['width'] : 20;
+$height = isset($_GET['height']) ? max($_GET['height'], 10) : 15;
+$width = isset($_GET['width']) ? max($_GET['width'], 10) : 20;
 ?>
 <div id="mazebody" class="d-flex flex-column">
   <div id="maze-form">

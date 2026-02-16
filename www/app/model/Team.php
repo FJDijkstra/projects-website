@@ -37,6 +37,10 @@ class Team {
             ErrorHandler::addError("Geen teamnaam ingevuld");
             return NULL;
         }
+        if (strlen($name) > 20) {
+            ErrorHandler::addError("Leuk geprobeerd, maar helaas");
+            return NULL;
+        }
         $teams = Team::getTeams();
         foreach ($teams as $team) {
             if ($team->name == $name) {

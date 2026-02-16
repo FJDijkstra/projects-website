@@ -18,7 +18,7 @@
 <form action="/buzzer/teams" method="get" class="form-group p-4">
     <label  class=" m-2 my-auto" for="teamname">Voeg een groep toe:</label>
     <div class="d-flex">
-        <input type="text" id="teamname" name="teamname" placeholder="type hier je naam" class='form-control m-2'>
+        <input type="text" id="teamname" name="teamname" placeholder="type hier je naam" class='form-control m-2' maxlength="20">
         <input class='btn btn-primary m-2' type="submit" value="Toevoegen">
     </div>
 </form>
