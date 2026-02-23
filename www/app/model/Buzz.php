@@ -4,28 +4,33 @@ use MyApp\Database;
 
 class Buzz {
     public $id;
+
     public $team;
+
+    public $seen;
 
     public $timestamp;
 
-    function __construct($id, $team, $timestamp) {
+    function __construct($id, $team, $seen, $timestamp) {
         $this->id = $id;
         $this->team = $team;
+        $this->seen = $seen;
         $this->timestamp = $timestamp;
     } 
 
     public static function getById(int $id) {
-        Database::instance()->storeQuery('SELECT buzz.id, teams.name, buzz.timestamp FROM buzz LEFT JOIN teams ON buzz.team=teams.id WHERE buzz.id = ?');
+        Database::instance()->storeQuery('SELECT buzz.id, teams.name, buzz.seen, buzz.timestamp FROM buzz LEFT JOIN teams ON buzz.team=teams.id WHERE buzz.id = ?');
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->bind_param('i', $id);
         $stmt->execute();
-        $team_data = $stmt->get_result()->fetch_assoc();
+        $buzz_data = $stmt->get_result()->fetch_assoc();
 
-        if ($team_data) {
+        if ($buzz_data) {
             return new Buzz(
-                $team_data['id'],
-                $team_data['name'],
-                $team_data['timestamp']
+                $buzz_data['id'],
+                $buzz_data['name'],
+                $buzz_data['seen'],
+                $buzz_data['timestamp']
             );
         }
 
@@ -45,7 +50,7 @@ class Buzz {
     }
 
     public static function getBuzzes(): array {
-        Database::instance()->storeQuery('SELECT buzz.id, teams.name, buzz.timestamp FROM buzz LEFT JOIN teams ON buzz.team=teams.id ORDER BY timestamp ASC');
+        Database::instance()->storeQuery('SELECT buzz.id, teams.name, buzz.seen, buzz.timestamp FROM buzz LEFT JOIN teams ON buzz.team=teams.id ORDER BY timestamp ASC');
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->execute();
         $result = $stmt->get_result();
@@ -55,12 +60,20 @@ class Buzz {
             $buzzes[$buzz_data['id']] = new Buzz(
                 $buzz_data['id'],
                 $buzz_data['name'],
+                $buzz_data['seen'],
                 $buzz_data['timestamp']
             );
         }
 
         return $buzzes;
 
+    }
+
+    public static function setSeen(int $id) {
+        Database::instance()->storeQuery('UPDATE buzz SET seen = 1 WHERE id = ?');
+        $stmt = Database::instance()->prepareStoredQuery();
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
     }
 
     public static function deleteBuzz(int $id) {

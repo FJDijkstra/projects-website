@@ -43,6 +43,11 @@ class BuzzerAdminController extends Controller
                 exit;
             }
         }
+        if (isset($_GET['setSeen'])) {
+            Buzz::setSeen($_GET['setSeen']);
+            header("location: /buzzer/admin");
+            exit;
+        }
         if (isset($_GET['deleteBuzz'])) {
             Buzz::deleteBuzz($_GET['deleteBuzz']);
             header("location: /buzzer/admin");
