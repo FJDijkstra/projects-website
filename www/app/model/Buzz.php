@@ -45,7 +45,7 @@ class Buzz {
     }
 
     public static function getBuzzes(): array {
-        Database::instance()->storeQuery('SELECT buzz.id, teams.name, buzz.timestamp FROM buzz LEFT JOIN teams ON buzz.team=teams.id ORDER BY timestamp DESC');
+        Database::instance()->storeQuery('SELECT buzz.id, teams.name, buzz.timestamp FROM buzz LEFT JOIN teams ON buzz.team=teams.id ORDER BY timestamp ASC');
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->execute();
         $result = $stmt->get_result();

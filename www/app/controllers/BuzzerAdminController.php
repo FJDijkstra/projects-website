@@ -18,6 +18,11 @@ class BuzzerAdminController extends Controller
     {
         if (isset($_GET['password'])) {
             $password = (string) $_GET['password'];
+            if($password == "") {
+                ErrorHandler::addError("Vul een wachtwoord in!");
+                header("location: /buzzer/teams");
+                exit;
+            }
             if(Admin::becomeAdmin($password)) {
                 $_SESSION['password'] = $password;
             } else {
