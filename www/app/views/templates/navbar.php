@@ -3,8 +3,8 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" role="button" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100">
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
@@ -26,6 +26,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/size">Size</a>
             </li>
+            <div class="w-100">
+                <li class="nav-item float-md-end">
+                    <a class="nav-link" href="/feedback">Feedback</a>
+                </li>
+            </div>
             </ul>
         </div>
 </nav>

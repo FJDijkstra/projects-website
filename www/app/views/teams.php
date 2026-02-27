@@ -1,5 +1,5 @@
 <div class="text-center m-4">
-<h3>Kies hier als welke groep je wil meespelen</h3>
+<h3>Speel mee als een groep</h3>
 <form action="/buzzer" class="form-group p-4">
     <label  class="m-2 my-auto" for="team">Welke groep ben je?</label>
     <div class="d-flex">
@@ -14,7 +14,7 @@
     </div>
 </form>
 
-<h3>Staat je groep er niet tussen, maak hier dan een nieuwe aan</h3>
+<h3>Maak een groep aan</h3>
 <form action="/buzzer/teams" method="get" class="form-group p-4">
     <label  class=" m-2 my-auto" for="teamname">Voeg een groep toe:</label>
     <div class="d-flex">
@@ -23,7 +23,7 @@
     </div>
 </form>
 
-<h3>Of log hier in als spelleider</h3>
+<h3>Log in als spelleider</h3>
 <form action="/buzzer/admin" class="form-group p-4">
     <label  class=" m-2 my-auto" for="teamname">Wachtwoord voor Spelleider:</label>
     <div class="d-flex">

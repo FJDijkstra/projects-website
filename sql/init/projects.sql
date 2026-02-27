@@ -58,6 +58,21 @@ CREATE TABLE `buzz` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+-- ---------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(11) NOT NULL,
+  `feedback` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
 --
 -- Indexes for table `teams`
 --
@@ -69,12 +84,20 @@ ALTER TABLE `teams`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `buzz`
 --
 ALTER TABLE `buzz`
   ADD PRIMARY KEY (`id`),
   ADD KEY `buzz_team` (`team`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+  
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -92,6 +115,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `buzz`
 --
 ALTER TABLE `buzz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
