@@ -10,11 +10,14 @@ use MyApp\Admin;
 
 Admin::keepActive();
 $buzzes = Buzz::getBuzzes();
-foreach ($buzzes as $buzz) {
+if ($buzzes == []) {
+    echo "<p class='text-muted'>Er is nog niet veel actie, er zijn geen buzzes</p>";
+}
+foreach ($buzzes as $key => $buzz) {
     $datetime1 = new DateTime($buzz->timestamp);
     $datetime2 = new DateTime("now");
     $interval = $datetime1->diff($datetime2);
-    echo "<li class='m-2 border-bottom row align-items-center";
+    echo "<li class='m-2 row align-items-center";
     echo $buzz->seen ? " text-black-50" : "";
     echo "'>";
     echo "<span class='fw-bold col text-start'>$buzz->team </span>";
@@ -24,5 +27,8 @@ foreach ($buzzes as $buzz) {
     echo"' href='?setSeen=$buzz->id'><i class='fs-6 fa fa-check'></i></a></span>";
     echo "<span class='m-1 col-1 text-center'><a class='m-1 btn btn-danger' href='?deleteBuzz=$buzz->id'><i class='fs-6 fa fa-trash'></i></a></span>";
     echo "</li>";
+    if ($key != array_key_last($buzzes)) {
+        echo "<hr>";
+    }
 }
 ?>
