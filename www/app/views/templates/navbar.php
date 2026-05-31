@@ -24,6 +24,9 @@
                 <a class="nav-link" href="/buzzer/teams">Buzzer</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/counters">Counters</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/size">Size</a>
             </li>
             <div class="w-100">

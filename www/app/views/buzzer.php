@@ -1,3 +1,11 @@
+<?php
+/*
+* @var string $teamname
+* @var int $teamid
+*/
+?>
+
+
 <script>
     window.onload = function () { 
             buzzerCooldown();

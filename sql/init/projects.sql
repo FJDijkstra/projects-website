@@ -73,6 +73,20 @@ CREATE TABLE `feedback` (
 
 -- --------------------------------------------------------
 
+-- ---------------------------------------------------------
+
+--
+-- Table structure for table `counters`
+--
+
+CREATE TABLE `counters` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `amount` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
 --
 -- Indexes for table `teams`
 --
@@ -96,6 +110,13 @@ ALTER TABLE `buzz`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+
+--
+-- Indexes for table `counters`
+--
+ALTER TABLE `counters`
   ADD PRIMARY KEY (`id`);
   
 
@@ -121,6 +142,12 @@ ALTER TABLE `buzz`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `counters`
+--
+ALTER TABLE `counters`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

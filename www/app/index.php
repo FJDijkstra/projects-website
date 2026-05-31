@@ -10,4 +10,5 @@ require_once 'model/Team.php';
 require_once 'model/Buzz.php';
 require_once 'model/Admin.php';
 require_once 'model/Feedback.php';
+require_once 'model/Counter.php';
 session_start();
