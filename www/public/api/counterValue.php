@@ -11,7 +11,7 @@ $counterid = isset($_GET['counter']) ? (int) $_GET['counter'] : 0;
 if ($counterid > 0) { 
     $counter = Counter::getById($counterid);
     if ($counter) {
-        echo $counter->amount;
+        echo $counter->value;
     } else {
         echo "Counter not found";
     }

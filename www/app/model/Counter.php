@@ -5,12 +5,12 @@ use MyApp\Database;
 class Counter {
     public $id;
     public $name;
-    public $amount;
+    public $value;
 
-    function __construct($id, $name, $amount) {
+    function __construct($id, $name, $value) {
         $this->id = $id;
         $this->name = $name;
-        $this->amount = $amount;
+        $this->value = $value;
     } 
 
     public static function getById(int $id) {
@@ -24,7 +24,7 @@ class Counter {
             return new Counter(
                 $counter_data['id'],
                 $counter_data['name'],
-                $counter_data['amount']
+                $counter_data['value']
             );
         }
 
@@ -48,7 +48,7 @@ class Counter {
                 return NULL;
             }
         }
-        Database::instance()->storeQuery("INSERT INTO `counters` (name, amount) VALUES ('$name', 0)");
+        Database::instance()->storeQuery("INSERT INTO `counters` (name, value) VALUES ('$name', 0)");
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->execute();
         if ($stmt->insert_id) {
@@ -69,7 +69,7 @@ class Counter {
             $counters[$counter_data['id']] = new Counter(
                 $counter_data['id'],
                 $counter_data['name'],
-                $counter_data['amount']
+                $counter_data['value']
             );
         }
 
@@ -77,7 +77,7 @@ class Counter {
     }
 
     public static function incrementCounter(int $id, int $increment= 1) {
-        Database::instance()->storeQuery('UPDATE counters SET amount = amount + ? WHERE id = ?');
+        Database::instance()->storeQuery('UPDATE counters SET value = value + ? WHERE id = ?');
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->bind_param(
             'ii',
@@ -90,7 +90,7 @@ class Counter {
     }
 
     public static function decrementCounter(int $id, int $decrement= 1) {
-        Database::instance()->storeQuery('UPDATE counters SET amount = amount - ? WHERE id = ?');
+        Database::instance()->storeQuery('UPDATE counters SET value = value - ? WHERE id = ?');
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->bind_param(
             'ii',
@@ -117,7 +117,7 @@ class Counter {
     }
 
     public static function clearAmounts() {
-        Database::instance()->storeQuery('UPDATE counters SET amount = 0');
+        Database::instance()->storeQuery('UPDATE counters SET value = 0');
         $stmt = Database::instance()->prepareStoredQuery();
         $stmt->execute();
     }

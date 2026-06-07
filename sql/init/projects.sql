@@ -82,7 +82,7 @@ CREATE TABLE `feedback` (
 CREATE TABLE `counters` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `amount` int(11) NOT NULL DEFAULT '0'
+  `value` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
