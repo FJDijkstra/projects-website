@@ -17,6 +17,11 @@ class CountersController extends Controller
             header("location: /counters");
             exit;
         }
+        if(isset($_GET['delete'])) {
+            Counter::deleteCounter((int) $_GET['delete']);
+            header("location: /counters");
+            exit;
+        }
     }
     /**
      * Display the index page.

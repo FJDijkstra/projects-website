@@ -98,6 +98,26 @@ body {
     background-color: rgb(200, 0, 0);
 }
 
+.counter-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.counter-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.counter-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
 @media (min-width: 768px) {
     #maze-bottom-bar { margin-bottom: 50px;}
 }
