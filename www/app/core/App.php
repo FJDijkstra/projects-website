@@ -43,6 +43,7 @@ class App {
         $this->router->addRoute('buzzer/admin', 'BuzzerAdminController@index');
         $this->router->addRoute('buzzer/list', 'BuzzListController@index');
         $this->router->addRoute('feedback', 'FeedbackController@index');
+        $this->router->addRoute('server', 'ServerStatusController@index');
         // Add more routes as needed
     }
 
