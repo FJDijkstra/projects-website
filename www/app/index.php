@@ -8,6 +8,6 @@ require_once 'core/Router.php';
 require_once 'config/Config.php';
 require_once 'model/Team.php';
 require_once 'model/Buzz.php';
-require_once 'model/Admin.php';
+require_once 'model/BuzzerSession.php';
 require_once 'model/Feedback.php';
 session_start();

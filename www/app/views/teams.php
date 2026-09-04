@@ -1,4 +1,23 @@
 <div class="text-center m-4">
+
+<h3>Kies een sessie</h3>
+<form action="/buzzer/teams" class="form-group p-4">
+    <label  class="m-2 my-auto" for="team">Aan welke sessie wil je deelnemen?</label>
+    <div class="d-flex">
+        <select name="session" id="session" required class='form-select m-2' onchange="this.form.submit()">
+            <?php
+            foreach ($sessions as $session) {
+                if ($session->id == $session_id) {
+                    echo "<option selected value='$session->id'>$session->name</option>";
+                } else {
+                    echo "<option value='$session->id'>$session->name</option>";
+                }
+            }
+            ?>
+        </select>
+    </div>
+</form>
+
 <h3>Speel mee als een groep</h3>
 <form action="/buzzer" class="form-group p-4">
     <label  class="m-2 my-auto" for="team">Welke groep ben je?</label>
@@ -17,6 +36,7 @@
 
 <h3>Maak een groep aan</h3>
 <form action="/buzzer/teams" method="get" class="form-group p-4">
+    <input type="hidden" name="session" value="<?= $session_id ?>">
     <label  class=" m-2 my-auto" for="teamname">Wat is je teamnaam:</label>
     <div class="d-flex">
         <input type="text" id="teamname" name="teamname" placeholder="Vul hier je naam in..." class='form-control m-2' minlength="1" maxlength="20">
@@ -25,7 +45,8 @@
 </form>
 
 <h3>Log in als spelleider</h3>
-<form action="/buzzer/admin" class="form-group p-4">
+<form action="/buzzer/teams" class="form-group p-4">
+    <input type="hidden" name="session" value="<?= $session_id ?>">
     <label  class=" m-2 my-auto" for="teamname">Wachtwoord voor Spelleider:</label>
     <div class="d-flex">
         <input type="text" id="password" name="password" placeholder="Vul hier het wachtwoord in..." class='form-control m-2' minlength="1">

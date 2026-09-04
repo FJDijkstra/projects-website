@@ -1,15 +1,12 @@
 <?php
 require_once __DIR__ . '/../../app/model/Buzz.php';
-require_once __DIR__ . '/../../app/model/Admin.php';
 require_once __DIR__ . '/../../app/core/Database.php';
 require_once __DIR__ . '/../../app/config/Config.php';
 
 
 use MyApp\Buzz;
-use MyApp\Admin;
-
-Admin::keepActive();
-$buzzes = Buzz::getBuzzes();
+$session_id = (int) $_GET['session_id'] ?? 0;
+$buzzes = Buzz::getBuzzesBySession($session_id);
 if ($buzzes == []) {
     echo "<p class='text-muted'>Er is nog niet veel actie, er zijn geen buzzes</p>";
 }
@@ -24,8 +21,8 @@ foreach ($buzzes as $key => $buzz) {
     echo "<span class='text-muted small col'>". $interval->format('%i minutes %s seconds ago') ."</span>";
     echo "<span class='m-1 col-1 text-center'><a class='m-1 btn";
     echo $buzz->seen ? " btn-secondary" : " btn-success";
-    echo"' href='?setSeen=$buzz->id'><i class='fs-6 fa fa-check'></i></a></span>";
-    echo "<span class='m-1 col-1 text-center'><a class='m-1 btn btn-danger' href='?deleteBuzz=$buzz->id'><i class='fs-6 fa fa-trash'></i></a></span>";
+    echo"' href='?setSeen=$buzz->id&session_id=$session_id'><i class='fs-6 fa fa-check'></i></a></span>";
+    echo "<span class='m-1 col-1 text-center'><a class='m-1 btn btn-danger' href='?deleteBuzz=$buzz->id&session_id=$session_id'><i class='fs-6 fa fa-trash'></i></a></span>";
     echo "</li>";
     if ($key != array_key_last($buzzes)) {
         echo "<hr>";

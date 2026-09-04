@@ -69,6 +69,27 @@ class Buzz {
 
     }
 
+    public static function getBuzzesBySession(int $session_id) {
+        Database::instance()->storeQuery('SELECT buzz.id, teams.name, buzz.seen, buzz.timestamp FROM buzz LEFT JOIN teams ON buzz.team=teams.id WHERE teams.buzzer_session = ? ORDER BY timestamp ASC');
+        $stmt = Database::instance()->prepareStoredQuery();
+        $stmt->bind_param('i', $session_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $buzzes = [];
+        while ($buzz_data = $result->fetch_assoc()) {
+            $buzzes[$buzz_data['id']] = new Buzz(
+                $buzz_data['id'],
+                $buzz_data['name'],
+                $buzz_data['seen'],
+                $buzz_data['timestamp']
+            );
+        }
+
+        return $buzzes;
+
+    }
+
     public static function setSeen(int $id) {
         Database::instance()->storeQuery('UPDATE buzz SET seen = 1 WHERE id = ?');
         $stmt = Database::instance()->prepareStoredQuery();

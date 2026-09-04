@@ -30,19 +30,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `teams` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `points` int NOT NULL
+  `points` int NOT NULL,
+  `buzzer_session` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `buzzer_sessions`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE `buzzer_sessions` (
   `id` int(11) NOT NULL,
-  `password` text NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `name` text NOT NULL,
+  `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -80,9 +81,9 @@ ALTER TABLE `teams`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `admin`
+-- Indexes for table `buzzer_sessions`
 --
-ALTER TABLE `admin`
+ALTER TABLE `buzzer_sessions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -106,9 +107,9 @@ ALTER TABLE `teams`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `buzzer_sessions`
 --
-ALTER TABLE `admin`
+ALTER TABLE `buzzer_sessions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -124,10 +125,16 @@ ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `articles`
+-- Constraints for table `buzz`
 --
 ALTER TABLE `buzz`
   ADD CONSTRAINT `buzz_team` FOREIGN KEY (`team`) REFERENCES `teams` (`id`);
+
+--
+-- Constraints for table `teams`
+--
+ALTER TABLE `teams`
+  ADD CONSTRAINT `teams_buzzer_session` FOREIGN KEY (`buzzer_session`) REFERENCES `buzzer_sessions` (`id`);
 
 COMMIT;
 
