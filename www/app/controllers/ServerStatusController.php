@@ -3,22 +3,22 @@
 use MyApp\Controller;
 
 /**
- * SizeController Class
+ * ServerStatusController Class
  *
- * Represents the controller for the size-related functionality.
+ * Represents the controller for the server status-related functionality.
  */
-class SizeController extends Controller
+class ServerStatusController extends Controller
 {
     /**
      * Display the index page.
      */
     public function index()
     {
-        $data['title'] = "Size";
+        $data['title'] = "Server Status";
         $this->template('header', $data);
         $this->template('navbar', $data);
         $this->template('errors', $data);
-        $this->view('size', $data);
+        $this->view('server_status', $data);
         $this->template('footer');
     }
 }
