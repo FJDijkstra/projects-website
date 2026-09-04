@@ -45,7 +45,7 @@ class Team {
             ErrorHandler::addError("Leuk geprobeerd, maar helaas");
             return NULL;
         }
-        $teams = Team::getTeams();
+        $teams = Team::getTeamsBySession($buzzer_session);
         foreach ($teams as $team) {
             if ($team->name == $name) {
                 ErrorHandler::addError("Dit team bestaat al");
