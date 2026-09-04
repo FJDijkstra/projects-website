@@ -1,5 +1,5 @@
-<div class="text-center m-4">
-
+<div class="h-100 overflow-y-auto">
+<div class="text-center m-4 mb-5 pb-5">
 <h3>Kies een sessie</h3>
 <form action="/buzzer/teams" class="form-group p-4">
     <label  class="m-2 my-auto" for="team">Aan welke sessie wil je deelnemen?</label>
@@ -44,6 +44,17 @@
     </div>
 </form>
 
+<h3>Maak een sessie aan</h3>
+<form action="/buzzer/teams" method="get" class="form-group p-4">
+    <input type="hidden" name="session" value="<?= $session_id ?>">
+    <label  class=" m-2 my-auto" for="sessionname">Wat is je sessienaam en wachtwoord:</label>
+    <div class="d-flex">
+        <input type="text" id="sessionname" name="sessionname" placeholder="Vul hier je sessienaam in..." class='form-control m-2' minlength="1" maxlength="20">
+        <input type="text" id="sessionpassword" name="sessionpassword" placeholder="Vul hier je wachtwoord in..." class='form-control m-2' minlength="1" maxlength="20">
+        <input class='btn btn-primary m-2' type="submit" value="Toevoegen">
+    </div>
+</form>
+
 <h3>Log in als spelleider</h3>
 <form action="/buzzer/teams" class="form-group p-4">
     <input type="hidden" name="session" value="<?= $session_id ?>">
@@ -53,4 +64,5 @@
         <input class='btn btn-primary m-2' type="submit" value="Inloggen">
     </div>
 </form>
+</div>
 </div>

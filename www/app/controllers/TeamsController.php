@@ -26,6 +26,14 @@ class TeamsController extends Controller
             header("location: /buzzer/teams?session=" . $this->session_id);
             exit;
         }
+        if(isset($_GET['sessionname']) && isset($_GET['sessionpassword'])) {
+            $session = BuzzerSession::createNew((string) $_GET['sessionname'], (string) $_GET['sessionpassword']);
+            if ($session != null) {
+                $this->session_id = $session->id;
+            }
+            header("location: /buzzer/teams?session=" . $this->session_id);
+            exit;
+        }
         if(isset($_GET['password'])) {
             if ($_GET['password'] == BuzzerSession::checkPassword($this->session_id, (string) $_GET['password'])) {
                 header("location: /buzzer/admin?session_id=" . $this->session_id);
