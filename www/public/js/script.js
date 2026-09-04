@@ -1,4 +1,5 @@
 function playBuzzerSound() {
+    document.getElementById("buzzerTop").disabled = true;
     console.log("played");
     var audio = new Audio('/sound/buzzer.mp3');
     audio.play();
